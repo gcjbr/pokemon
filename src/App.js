@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Faved from './components/Faved';
+import Main from './components/Main';
+import {
+  BrowserRouter,
+  Route,
+  Switch,
+  NavLink as Link,
+} from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <BrowserRouter>
+        <header>
+          <h2>Pokemon app</h2>
+          <nav>
+            <Link exact activeClassName='is-active' to='/'>
+              Home
+            </Link>
+            <Link activeClassName='is-active' to='/favs'>
+              Favorites
+            </Link>
+          </nav>
+        </header>
+        <div className='body'>
+          <Switch>
+            <Route path='/favs'>
+              <Faved />
+            </Route>
+            <Route path='/'>
+              <Main />
+            </Route>
+          </Switch>
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
