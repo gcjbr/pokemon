@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import Pokemon from './Pokemon';
 
 export default function Faved() {
-  const state = useSelector((state) => state);
   const faved = useSelector((state) => state.faved);
   return (
     <div>
